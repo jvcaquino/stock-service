@@ -30,7 +30,7 @@ public class ProductRowMapperTest {
     public void testMap() throws Exception {
         final var mockedResultSet = mock(ResultSet.class);
         final var mockedStatementContext = mock(StatementContext.class);
-        final var expectedProduct = new Product(PRODUCT_ID, PRODUCT_NAME);
+        final var expectedProduct = new Product(PRODUCT_ID, PRODUCT_NAME, 0, 1.5f);
 
         when(mockedResultSet.getInt(ProductRowMapper.PRODUCT_ID)).thenReturn(PRODUCT_ID);
         when(mockedResultSet.getString(ProductRowMapper.PRODUCT_NAME)).thenReturn(PRODUCT_NAME);

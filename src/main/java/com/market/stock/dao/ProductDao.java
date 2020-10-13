@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ProductDao {
 
-    @SqlUpdate("INSERT INTO products (name) VALUES (:name)")
+    @SqlUpdate("INSERT INTO products (name, stock_amount, price) VALUES (:name, :stockAmount, :price)")
     @Transaction
     void insert(@BindBean Product product);
 
@@ -23,9 +23,7 @@ public interface ProductDao {
     @RegisterRowMapper(ProductRowMapper.class)
     Product getProductById(int id);
 
-    @SqlUpdate("DELETE FROM products WHERE id = (:id)")
-    void deleteProductById(int id);
-
     @SqlUpdate("UPDATE products SET name = (:name) WHERE id = (:id)")
+    @Transaction
     void updateProductById(int id, @BindBean Product product);
 }
